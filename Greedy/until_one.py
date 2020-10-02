@@ -1,3 +1,5 @@
+#내가 한 풀이
+
 n, k = map(int, input().split())
 
 
@@ -13,3 +15,6 @@ while n != 1:
     count += 1
 
 print(count)
+
+#교재 풀이 
+

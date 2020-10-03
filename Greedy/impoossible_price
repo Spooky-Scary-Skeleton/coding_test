@@ -1,0 +1,56 @@
+#교재 314
+----------------------------------
+#[내 풀이]
+----------------------------------
+from itertools import combinations
+
+n = int(input())
+a = list(map(int, input().split()))
+
+#1을 못만들 경우
+if min(a) > 1:
+  print(1)
+else:
+#만들수 있는 모든 수 구하기
+  x = [] #콤비네이션 중간 저장용
+  y = [] #나올수있는 모든 수 저장
+
+  for i in range(1, n):
+    x += (list(combinations(a, i+1)))
+
+  for k in range(len(x)):
+    y.append(sum(list(x[k])))
+
+  y.sort()
+
+  i = 2
+
+  while True:
+    if i in y:
+      i += 1
+    else:
+      print(i)
+      break
+      
+----------------------------------
+#[교재풀이]
+----------------------------------
+n = int(input())
+coin = list(map(int, input().split()))
+
+coin.sort()
+
+target = 1
+for i in coin:
+  if target < i:
+    break
+  else:
+    target += i
+
+print(target)
+----------------------------------
+#[내가 부족한점]
+----------------------------------
+책에나온대로 생각하여(그리디 = 현재가장 좋은것만 선택) 풀면 매우 간단하다.
+이런 생각을 어떻게 떠올리는건지 신기하네....
+      

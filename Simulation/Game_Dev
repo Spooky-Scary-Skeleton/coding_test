@@ -1,0 +1,68 @@
+#교재 118
+----------------------------------
+#[내 풀이] (반복문이 무한이 돌아가서 안됨)
+----------------------------------
+n, m = map(int, input().split())
+x, y, d = map(int, input().split())
+
+arr = []
+
+for i in range(n):
+  arr.append(list(map(int, input().split())))
+
+
+
+#시작점 1로 만들기
+arr[x][y] = 1
+
+#결과값
+count = 0
+
+while True:
+  print(1)
+  #앞으로 가능 경우
+  #북쪽볼때
+  if d == 0:  
+    if arr[x][y-1] != 1:
+      arr[x][y-1] = 1
+      count += 1
+      x, y = x, y-1
+      d = 3
+    else:
+      d = 3
+
+  #서쪽볼때
+  if d == 3: 
+    if arr[x+1][y] != 1:
+      arr[x+1][y] = 1
+      count += 1
+      x, y = x+1, y
+      d = 2
+    else:
+      d = 2
+
+  #남쪽볼때
+  if d == 2: 
+    if arr[x][y+1] != 1:
+      arr[x][y+1] = 1
+      count += 1
+      x, y = x, y+1
+      d = 1
+    else:
+      d = 1
+
+  #동쪽볼때
+  if d == 1: 
+    if arr[x-1][y] != 1:
+      arr[x-1][y] = 1
+      count += 1
+      x, y = x-1, y
+      d = 0
+    else:
+      d = 0
+
+  # 다막혔고 뒤로갈때 
+  if arr[x][y-1] == 1  and arr[x+1][y] == 1 and arr[x][y+1] == 1 and arr[x-1][y] != 1:
+    break
+
+print(count)

@@ -67,6 +67,55 @@ while True:
 
 print(count)
 
+#교재 118
+----------------------------------
+#[내 풀이] 1105 못품
+----------------------------------
+#맵 크기
+n, m = map(int, input().split())
+
+#현재위치와 방향
+x, y, d = map(int, input().split())
+
+#이차원 배열 담기
+array = []
+for i in range(m):
+  array.append(list(map(int, input().split())))
+
+#갈수 있는 방향
+directions = [0, 1, 2, 3]
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+
+#현재 방문한곳은 2로 바꾸기 
+array[x][y] = 2
+
+#방문좌표수 세기
+count = 1
+
+#회전수 세기
+turn = 0
+
+#회전하며 확인
+while True:
+  for direction in directions:
+    #반시계 방향으로 돌아가며 확인
+    d = d -1
+    turn += 1
+    if d - 1 <= -5:
+      d //= 5
+    nx = x + dx[d]
+    ny = y + dy[d]
+    if array[nx][ny] != 1 and array[nx][ny] != 2 and turn < 4:
+      x = nx
+      y = ny
+      array[x][y] = 2
+      count += 1
+      turn = 0
+    elif turn == 4:
+      break
+
+print(count)
 ----------------------------------
 #[교재풀이]
 ----------------------------------
@@ -200,6 +249,17 @@ print(count)
 3. 왼쪽으로 회전하는 함수를 따로 만드는것을 생각을 못함
 4. 4번돌아도 갈곳이 없는거 설계(turn_time +=1)가 이렇게 가능한지 생각을 못함 
 
+----------------------------------
+#[내가 부족한점]
+----------------------------------
+
+이번에도 지나갔던 경로랑 전체 맵 경로를 따로 저장해서 활용하는걸 못떠올림
+dx dy이용하는 핵심 아이디어는 비슷하게 구현해보려함
+
+if direction == -1:
+    direction = 3
+    
+이번에도 반시계 방향으로 도는 걸 이거를 구현할 생각을 못함. 
 
 
 

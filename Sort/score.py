@@ -13,6 +13,33 @@ ndic = sorted(dic.items(), key = lambda x : x[1])
 for i in ndic:
   print(i[0], end=" ")
   
+
+----------------------------------
+#[내 풀이] 1114 sorted 사용법 까먹어서 구글링함
+----------------------------------
+#학생수
+n = int(input())
+
+#저장소
+array = []
+
+#입력받기
+for i in range(n):
+  array.append(list(input().split()))
+  array[i][1] = int(array[i][1])
+
+def setting(data):
+  return data[1]
+
+#정렬수행
+sorted_array = sorted(array, key = setting)
+
+print(sorted_array)
+
+for i in range(n):
+  print(sorted_array[i][0], end = ' ')
+  
+  
 ----------------------------------
 #[교재풀이]
 ----------------------------------
@@ -33,3 +60,9 @@ for i in ar:
 #[내가 부족한점]
 ----------------------------------
 튜플로 자료형 입력시키는게 익숙하지가 않음.그리고 sorted 함수의 사용법에 익숙하지 않음 
+
+----------------------------------
+#[내가 부족한점] 1114
+----------------------------------
+sorted 함수 사용법을 까먹음 
+

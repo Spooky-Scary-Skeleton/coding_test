@@ -36,6 +36,30 @@ while (l-j) >= 2:
   
   if j < len(vowel_lst):
     j += 1
+
+#--------------
+#[내풀이] 못풀음
+#--------------
+    
+l, c = map(int, input().split())
+
+vowels = []
+consonants = []
+
+for i in list(input().split()):
+  if i == 'i' or i == 'a' or i == 'e' or i == 'u':
+    vowels.append(i)
+  else:
+    consonants.append(i)
+
+vowels.sort()
+consonants.sort()
+
+print(vowels)
+print(consonants)
+
+for i  
+
   
 #--------------
 #[교재풀이] 
@@ -67,3 +91,10 @@ for password in combinations(array, l):
 join사용방법모름
 그리고 너무 어렵게 생각해서 모음 자음 따로 분리해서 리스트만들고 그걸로 재조합 하려고함
 단순하게 모든 길이의 조합 다 가져오고 모음 갯수랑 자음 갯수만 체크해서 출력하면 되는 거였음. 
+
+#--------------
+#[부족한점] 
+#--------------
+join사용방법모름2
+너무 어렵게 생각해서 모음 자음 따로 분리해서 리스트만들고 그걸로 재조합 하려고함2
+combinations에 들어갈 자료가 이미 사전식으로 정렬되어있다면 출력할때도 사전식으로 출력됨. 

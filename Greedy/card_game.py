@@ -22,6 +22,24 @@ for i in range(n):
 print(max(minnum))
 
 # ----------------------------------
+# #[내 풀이] 210310
+# ----------------------------------
+
+n, m = map(int, input().split(' '))
+
+arr = [list(map(int, input().split(' '))) for i in range(n)]
+
+max_num = 0
+
+for i in range(n):
+  row_min = min(arr[i])
+  if row_min > max_num:
+    max_num = row_min
+
+print(max_num)
+
+
+# ----------------------------------
 # #[교재풀이1]
 # ----------------------------------
 

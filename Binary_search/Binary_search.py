@@ -39,6 +39,7 @@ def binary_search(array, target, start, end):
       start = mid + 1
     else:
       end = mid -1
+  return None
 
 #n(원소의 개수)과 target(찾고자 하는 문자열)을 입력받기
 n, target = list(map(int, input().split()))

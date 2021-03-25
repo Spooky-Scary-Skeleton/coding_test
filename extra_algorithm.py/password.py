@@ -60,6 +60,51 @@ print(consonants)
 
 for i  
 
+#--------------
+#[내풀이] 풀긴했는데 너무 하드코딩 같음. 
+#--------------
+
+import itertools
+
+
+#암호길이 문자종휴 입력
+l, c = map(int, input().split())
+#알파벳 종류 입력
+alphabet = input().split()
+#모음선별기준
+vowel = ['a', 'i', 'e', 'o', 'u' ]
+
+#모음 자음 저장용 리스트
+selected_vowel = []
+selected_consonant = []
+
+#암호조합 저장용 리스트
+password = []
+
+for i in alphabet:
+  if i in vowel:
+    selected_vowel.append(ord(i))
+  else:
+    selected_consonant.append(ord(i))
+
+#자음갯수 최소 2개 부터 시작
+for i in range(2, l):
+  pw_c = list(map(list, itertools.combinations(selected_consonant, i)))
+  pw_v = list(map(list, itertools.combinations(selected_vowel, l-i)))
+
+  #암호조합 저장.
+  for j in pw_c:
+    for k in pw_v:
+      pw = sorted(j+k)
+      password.append(pw)
+
+password.sort()
+
+for i in password:
+  for j in i:
+    print(chr(j), end='');
+  print()
+
   
 #--------------
 #[교재풀이] 
@@ -88,13 +133,26 @@ for password in combinations(array, l):
 #--------------
 #[부족한점] 
 #--------------
+"""
 join사용방법모름
 그리고 너무 어렵게 생각해서 모음 자음 따로 분리해서 리스트만들고 그걸로 재조합 하려고함
 단순하게 모든 길이의 조합 다 가져오고 모음 갯수랑 자음 갯수만 체크해서 출력하면 되는 거였음. 
+"""
+
 
 #--------------
 #[부족한점] 
 #--------------
+"""
 join사용방법모름2
 너무 어렵게 생각해서 모음 자음 따로 분리해서 리스트만들고 그걸로 재조합 하려고함2
 combinations에 들어갈 자료가 이미 사전식으로 정렬되어있다면 출력할때도 사전식으로 출력됨. 
+"""
+
+#--------------
+#[부족한점] 
+#--------------
+"""
+여전히 모음자음 그대로 따로 뽑고 하려고 함....
+그나마 어떻게든 하드코딩해서 풀기는했음....
+"""

@@ -10,6 +10,48 @@
 # #[내 풀이] 210312 못품
 # ----------------------------------
 
+# ----------------------------------
+# #[내 풀이] 210330 풀었지만 시간이 너무 오래걸림(1시간)
+# ----------------------------------
+
+n, m  = map(int, input().split())
+
+#일단 붙어서 들어오는 숫자 문자열을 2차원 배열로 변환시키지 못함. 
+
+mold = [[0] * m for i in range(n)]
+
+for i in range(n):
+  line = input()
+  for j in range(m):    
+    mold[i][j] = int(line[j])
+
+#DFS 최대한 깊게 탐색
+dx = [0, 0, 1, -1]
+dy = [-1, 1, 0, 0]
+
+#방문기록
+visited = [[False] * m for i in range(n)]
+
+def dfs(mold, x, y, visited):
+  for i in range(4):
+      nx = x + dx[i]
+      ny = y + dy[i]
+      if nx >= 0 and nx < n and ny >= 0 and ny < m and mold[nx][ny] == 0 and visited[nx][ny] == False:
+        visited[nx][ny] = True
+        dfs(mold, nx, ny, visited)
+
+#아이스크림 갯수
+count = 0
+
+#아이스크림 탐색
+for x in range(n):
+  for y in range(m):
+    if mold[x][y] == 0 and visited[x][y] ==False:
+      count += 1
+      visited[x][y] = True
+      dfs(mold, x, y, visited)
+
+print(count)
 
 ----------------------------------
 #[교재풀이]
@@ -89,6 +131,11 @@ map이 정확히 무엇인지 까먹어서 다시 복습함.
 11111111110011
 11100011111111
 11100011111111
+"""
 
-
+----------------------------------
+#[내가 부족한점] 210330
+----------------------------------
+"""
+풀기는 했지만 시간이 너무 오래결렸고 중간에 재귀적으로 함수를 호출할때 x, y = nx, ny 라고 잘못 생각한 부분이 있음. 
 """

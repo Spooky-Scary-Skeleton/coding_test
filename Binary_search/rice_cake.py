@@ -62,6 +62,43 @@ while start < end:
 
 print(mid)
 
+
+# ------------------------------------------
+# #[내가한풀이] 210401 틀림. 드디어 풀었다. 
+# ------------------------------------------
+
+#57
+n, m = map(int, input().split())
+rice_cake = list(map(int, input().split()))
+
+#이진탐색
+
+def binary_search(array, target, start, end):
+  h = (start + end) // 2
+
+  if start > end:
+    return h
+
+  sum_of_cut = 0
+
+  for i in range(n):
+    if rice_cake[i] - h > 0:
+      sum_of_cut += rice_cake[i] - h
+
+  #떡길이가 딱 맞을 경우 해당 높이 이상으로 못올림
+  if sum_of_cut == m:
+    return h #따라서 현재 높이 반환
+  #떡 길이가 더 적은경우 칼날 높이를 낮춰서 더 잘라줘야함. 
+  elif sum_of_cut < m:
+    return binary_search(array, target, start, h - 1)
+  #떡 길이가 더 많을 경우 칼을 높여 봐야함. 
+  elif sum_of_cut > m:
+    return binary_search(array, target, h + 1, end)
+  
+    
+
+print(binary_search(rice_cake, m, 0, max(rice_cake)))
+
 # ------------------------------------------
 # #교재풀이
 # ------------------------------------------
@@ -113,6 +150,13 @@ print(result)
 """
 핵심 아이디어는 어느정도 떠올렸는데 구현에서 잘 못했다. 또한
 떡을 최대한 덜 잘라야하는데 최대한 덜 잘랐을때의 칼 길이를 어떻게 기록해둘지 떠올리지 못함
+"""
+
+------------------------------------------
+#내가 부족한점 210401
+------------------------------------------
+"""
+드디어 풀었다. 나는 제귀적으로 구현했는데 이건 교재에 나온대로 반복문으로 구현하는게 더 간결 햇을거 같다. 
 """
 
 

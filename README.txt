@@ -9,3 +9,7 @@ print("time:", end_time - start_time) #수행시간 출력
 
 #파이썬으로 풀때 제약사항 기억
 #코드가 1초에 2,000만번 연산을 수행하면 크게 무리가 없음
+
+#입력 빠르게 받기
+import sys
+input = sys.stdin.readline //rstrip()은 선택사항
